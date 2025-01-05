@@ -5,28 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programa Mejorado de Roblox Studio + Matemáticas para Secundaria</title>
     <style>
-        header {
-            background-color: #00bfff;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            margin: 10px 0;
-            font-size: 2.5em;
-            color: white;
-            background-color: #4f4f4f; /* Fondo plomo oscuro */
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: inline-block; /* Para ajustar el ancho al contenido */
-        }
-        header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-    </style>
-    <style>
         body {
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
             margin: 0;
@@ -44,15 +22,15 @@
         header h1 {
             margin: 10px 0;
             font-size: 2.5em;
+            color: white;
+            background-color: #4f4f4f;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
         }
         header p {
             font-size: 1.2em;
             margin-top: 10px;
-        }
-        .logo {
-            width: 400px;
-            height: auto;
-            margin-bottom: 10px;
         }
         .container {
             width: 90%;
@@ -79,6 +57,7 @@
         }
         .tab:hover {
             background-color: #e0f7ff;
+            color: #000000;
         }
         .active-tab {
             background-color: #00bfff;
@@ -124,10 +103,11 @@
             align-items: center;
         }
         .about-section img {
-            width: 150px;
+            width: 500px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
         .about-section .text {
             flex: 1;
@@ -194,51 +174,42 @@
             background-color: #00bfff;
             color: #fff;
         }
-        /* Estilos Responsivos */
+
+        /* Styles for responsive layout */
+        .about-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         @media (max-width: 768px) {
-            .tabs {
+            .about-section {
                 flex-direction: column;
-                align-items: center;
-            }
-            .tab {
-                width: 100%;
                 text-align: center;
-                margin-bottom: 5px;
+            }
+            .about-section img {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 20px;
+            }
+            .about-section .text {
+                flex: none;
             }
         }
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-            header p {
-                font-size: 1em;
-            }
-            .cta-btn {
-                font-size: 0.9em;
-                padding: 8px 16px;
-            }
-            header h1 {
-                font-size: 1.8em;
-            }
-        }
     </style>
 </head>
 <body>
 
 <header>
-    <!-- Logo de MathManía Perú -->
     <img src="logo3.png" alt="MathManía Perú" class="logo">
-    <!-- Título y Subtítulo -->
-  
     <p>Presenta...</p>
     <h1>ROBLOX: Programación de videojuegos para escolares</h1>
- 
 </header>
 
 <div class="container">
     <div class="tabs">
-        <div class="tab active-tab" id="intro-tab">Introducción</div>
+        <div class="tab active-tab" id="intro-tab">Presentación</div>
         <div class="tab" id="content-tab">Contenido</div>
         <div class="tab" id="matricula-tab">Matrícula</div>
         <div class="tab" id="faq-tab">FAQ</div>
@@ -246,14 +217,27 @@
     </div>
 
     <div class="tab-content active-content" id="intro-tab-content">
-        <section>
-            <h2>Bienvenidos</h2>
-            <p>¿Alguna vez has oído hablar de Roblox? Si tienes hijos o sobrinos, seguro que sí. Roblox es la plataforma de videojuegos más popular entre niños y adolescentes...</p>
-            <!-- Continúa el contenido -->
+        <section class="about-section">
+            <img src="HTML Post Curso.png" alt="Imagen representativa" />
+            <div class="text">
+                <h2>Bienvenidos</h2>
+                <p>¿Alguna vez has oído hablar de Roblox? Si tienes hijos o sobrinos, seguro que sí. Roblox es la plataforma de videojuegos más popular entre niños y adolescentes, con millones de usuarios activos en todo el mundo. Lo que muchos no saben es que, además de jugar, Roblox permite crear tus propios juegos a través de Roblox Studio, una poderosa herramienta que abre un mundo de posibilidades para fomentar la creatividad y el aprendizaje.</p>
+            
+                <h3>¿Por qué este curso es diferente?</h3>   
+                <p>Este curso es una experiencia única que combina matemáticas y videojuegos. Siguiendo el enfoque de Game-Based Learning (GBL), nuestros estudiantes aprenderán conceptos matemáticos como Geometría 3D, Álgebra, Trigonometría, Funciones y Estadística mientras diseñan y programan sus propios juegos en Roblox Studio. ¡No más matemáticas aburridas! A través de actividades prácticas y divertidas, los estudiantes aplicarán lo aprendido directamente en un entorno interactivo y creativo.</p>
+          
+                <h3>¿Qué aprenderán los estudiantes?</h3> 
+                <ol>
+                    <li><strong>Geometría 3D:</strong> Manipularán objetos y crearán estructuras utilizando principios geométricos en un entorno virtual.</li>
+                    <li><strong>Programación en Lua:</strong> Aprenderán a programar interacciones dinámicas y elementos de juego en Roblox Studio.</li>
+                    <li><strong>Álgebra y Funciones:</strong> Aplicarán álgebra y funciones matemáticas para controlar movimientos y transformaciones de objetos.</li>
+                    <li><strong>Trigonometría:</strong> Diseñarán rampas y calcularán distancias y alturas usando trigonometría.</li>
+                    <li><strong>Estadística y Probabilidades:</strong> Analizarán y equilibrarán las dinámicas del juego para hacerlos más entretenidos y justos.</li>
+                </ol>
+                <p><strong>¡Todo esto mientras crean sus propios videojuegos en Roblox Studio!</strong></p>
+            </div>
         </section>
     </div>
-
-    <!-- Más contenido de las otras pestañas -->
 
 </div>
 
@@ -275,39 +259,6 @@
             document.getElementById(contentId).classList.add('active-content');
         });
     });
-</script>
-
-<script>
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const currentItem = header.parentElement;
-            const allItems = document.querySelectorAll('.accordion-item');
-
-            allItems.forEach(item => {
-                if (item !== currentItem) {
-                    item.classList.remove('open');
-                    item.querySelector('.accordion-content').style.display = 'none';
-                }
-            });
-
-            const content = header.nextElementSibling;
-            const isOpen = currentItem.classList.contains('open');
-            if (isOpen) {
-                currentItem.classList.remove('open');
-                content.style.display = 'none';
-            } else {
-                currentItem.classList.add('open');
-                content.style.display = 'block';
-            }
-        });
-    });
-
-    const firstAccordion = document.querySelector('.accordion-item.open .accordion-content');
-    if (firstAccordion) {
-        firstAccordion.style.display = 'block';
-    }
 </script>
 
 </body>
