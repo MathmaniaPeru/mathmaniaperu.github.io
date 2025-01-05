@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Mejorado de Roblox Studio + Matemáticas para Secundaria</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        header {
+            background-color: #00bfff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 10px 0 5px;
+            font-size: 2.2em;
+        }
+        header p {
+            font-size: 1.1em;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            color: #333;
+            font-size: 1em;
+        }
+        .tab:hover {
+            background-color: #e0f7ff;
+        }
+        .active-tab {
+            background-color: #00bfff;
+            color: #fff;
+            border-color: #00bfff;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .active-content {
+            display: block;
+        }
+        footer {
+            background-color: #00bfff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .cta-btn {
+            background-color: #ff8c00;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .cta-btn:hover {
+            background-color: #ff6600;
+        }
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        .about-section img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .about-section .text {
+            flex: 1;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+            background: #e0f7ff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    .custom-list {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .custom-bullet {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 12px;
+    }
+
+    .custom-bullet::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #00bfff; /* Cambia el color del icono de viñeta aquí */
+        font-size: 1.2em;
+    }
+    .accordion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+    background-color: #e0f7ff;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.accordion-item.open .accordion-content {
+    display: block;
+}
+
+.accordion-item.open .accordion-header {
+    background-color: #00bfff;
+    color: #fff;
+}
+    </style>
+</head>
+<body>
+
+<header>
+
+    <h1>Programa Mejorado de Roblox Studio + Matemáticas</h1>
+    <p>Aprende matemáticas de forma divertida mientras creas en Roblox Studio</p>
+</header>
+
+<div class="container">
+    <div class="tabs">
+        <div class="tab active-tab" id="intro-tab">Introducción</div>
+        <div class="tab" id="content-tab">Contenido</div>
+        <div class="tab" id="matricula-tab">Matrícula</div>
+        <div class="tab" id="faq-tab">FAQ</div>
+        <div class="tab" id="about-tab">Sobre Nosotros</div>
+    </div>
+
+    <div class="tab-content active-content" id="intro-tab-content">
+        <section>
+            <h2>Bienvenidos</h2>
+            <p>¿Alguna vez has oído hablar de Roblox? Si tienes hijos o sobrinos, seguro que sí. Roblox es la plataforma de videojuegos más popular entre niños y adolescentes, con millones de usuarios activos en todo el mundo. Lo que muchos no saben es que, además de jugar, Roblox permite crear tus propios juegos a través de Roblox Studio, una poderosa herramienta que abre un mundo de posibilidades para fomentar la creatividad y el aprendizaje..</p>
+       
+       
+            <h3>¿Por qué este curso es diferente?</h3>   
+            <p> Este curso es una experiencia única que combina matemáticas y videojuegos. Siguiendo el enfoque de Game-Based Learning (GBL), nuestros estudiantes aprenderán conceptos matemáticos como Geometría 3D, Álgebra, Trigonometría, Funciones y Estadística mientras diseñan y programan sus propios juegos en Roblox Studio. ¡No más matemáticas aburridas! A través de actividades prácticas y divertidas, los estudiantes aplicarán lo aprendido directamente en un entorno interactivo y creativo.</p>
+      
+            <h3>¿Qué aprenderán los estudiantes?</h3> 
+            <ol>
+                <li><strong>Geometría 3D:</strong> Manipularán objetos y crearán estructuras utilizando principios geométricos en un entorno virtual.</li>
+                <li><strong>Programación en Lua:</strong> Aprenderán a programar interacciones dinámicas y elementos de juego en Roblox Studio.</li>
+                <li><strong>Álgebra y Funciones:</strong> Aplicarán álgebra y funciones matemáticas para controlar movimientos y transformaciones de objetos.</li>
+                <li><strong>Trigonometría:</strong> Diseñarán rampas y calcularán distancias y alturas usando trigonometría.</li>
+                <li><strong>Estadística y Probabilidades:</strong> Analizarán y equilibrarán las dinámicas del juego para hacerlos más entretenidos y justos.</li>
+            </ol>
+              <p><strong>¡Todo esto mientras crean sus propios videojuegos en Roblox Studio!</strong></p>
+        </section>
+    </div>
+
+    <div class="tab-content" id="content-tab-content">
+        <section>
+            <h2>Contenido del Curso</h2>
+
+            <div class="accordion">
+                <div class="accordion-item open">
+                    <button class="accordion-header">Semana 1: Conociendo Roblox Studio (1 hora)</button>
+                    <div class="accordion-content">
+
+                      
+                        <div class="custom-list">
+                            <p><strong>Objetivo:</strong>Familiarizar a los estudiantes con Roblox Studio, establecer las normas de la clase y explicar la dinámica de las sesiones.</p>
+                            <p><strong>Actividades:</strong></p>
+                            <div class="custom-bullet"><strong>Bienvenida y presentación:</strong> Dinámica inicial en la que cada estudiante se presenta y comparte su juego favorito de Roblox. </div>
+                            <div class="custom-bullet"><strong>Seguridad:</strong> Breve charla informativa sobre cómo mantenerse protegidos y seguros mientras interactúan en plataformas virtuales..</div>
+                            <div class="custom-bullet"><strong>Explorando Roblox Studio: </strong>Introducción guiada al entorno de Roblox Studio, resaltando las herramientas principales y las funcionalidades básicas necesarias para empezar a diseñar.</div>
+                            <div class="custom-bullet"><strong>Interacción colaborativa:</strong> Explicación y demostración de cómo trabajar en equipo dentro de Roblox Studio, permitiendo que varios usuarios colaboren en un mismo proyecto..</div>
+                            <div class="custom-bullet"><strong>Conceptos matemáticos iniciales:</strong> Introducción práctica a las coordenadas en 2D y 3D, explicando su importancia en el diseño de juegos y su aplicación dentro del entorno de Roblox Studio..</div>
+                            <div class="custom-bullet"><strong>Taller práctico:</strong> Actividad aplicada donde los estudiantes colocan NPCs (Personajes No Jugables) en diferentes cuadrantes del espacio, utilizando los conceptos de coordenadas aprendidos previamente.. </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+        
+                <div class="accordion-item">
+                    <button class="accordion-header">Semana 2: Geometría en el Espacio 3D (1 hora)</button>
+                    <div class="accordion-content">
+                        <div class="custom-list">
+                            <p><strong>Objetivo:</strong>Facilitar la comprensión de la geometría espacial a través de la creación y manipulación de objetos tridimensionales, aplicando principios matemáticos en un entorno virtual.</p>
+                            <p><strong>Actividades:</strong></p>
+                            <div class="custom-bullet"><strong>Exploración de posición, orientación y tamaño:</strong> Sesión interactiva para comprender cómo se ubican y manipulan los objetos en el espacio tridimensional.</div>
+                            <div class="custom-bullet"><strong>Ajuste de propiedades de los objetos:</strong> Demostración práctica para que los estudiantes aprendan a modificar características específicas de los objetos, como dimensiones y orientación.</div>
+                            <div class="custom-bullet"><strong>Creación de formas geométricas básicas: </strong>Introducción al diseño de elementos fundamentales, como bloques, esferas, cuñas y cilindros, para construir estructuras tridimensionales.</div>
+                            <div class="custom-bullet"><strong>Técnicas de agrupación, bloqueo y anclaje: </strong> Actividad enfocada en trabajar con objetos agrupados y anclados, asegurando su estabilidad y cohesión dentro del entorno.</div>
+                            <div class="custom-bullet"><strong>Taller práctico:</strong>  Ejercicio final en el que los estudiantes aplicarán los conceptos aprendidos para diseñar estructuras tridimensionales con el objetivo de alcanzar una estrella.</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Semana 3: Pensamiento algorítmico (1 hora)</button>
+                    <div class="accordion-content">
+                        <div class="custom-list">
+                            <p><strong>Objetivo:</strong>Desarrollar habilidades en programación y lógica usando Lua, aplicándolas en Roblox Studio para crear interacciones dentro de juegos.</p>
+                            <p><strong>Actividades:</strong></p>
+                            <div class="custom-bullet"><strong>Introducción a Lua:</strong> Explicación básica sobre qué es Lua y cómo se utiliza como lenguaje de programación en Roblox Studio.</div>
+                            <div class="custom-bullet"><strong>Uso de variables y operadores:</strong> Se explicará cómo crear variables y usarlas para modificar propiedades de objetos 3D, como tamaño y color, mediante operadores matemáticos.</div>
+                            <div class="custom-bullet"><strong>Estructuras de control:: </strong>Presentación de conceptos fundamentales como condicionales (if, else) y bucles (while), para añadir comportamientos interactivos y dinámicos en los objetos del juego.</div>
+                            <div class="custom-bullet"><strong>Taller práctico:</strong> Los estudiantes aplicarán los conocimientos adquiridos para programar una escalera cuyas gradas aparezcan y desaparezcan.</div>
+                        </div>
+                    </div>
+                </div>    
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Semana 4: Álgebra y funciones (1 hora)</button>
+                    <div class="accordion-content">
+                        <div class="custom-list">
+                            <p><strong>Objetivo:</strong>Integrar conceptos de álgebra y ecuaciones lineales en un entorno práctico mediante el uso de Roblox Studio y el lenguaje de programación Lua.</p>
+                            <p><strong>Actividades:</strong></p>
+                            <div class="custom-bullet"><strong>Operaciones matemáticas en Lua:</strong> Los estudiantes realizarán cálculos matemáticos básicos utilizando Lua, reforzando los conocimientos previos de programación.</div>
+                            <div class="custom-bullet"><strong>Ecuaciones Linealess:</strong> Explicación de cómo representar y resolver ecuaciones lineales mediante programación para aplicarlas en diversos escenarios.</div>
+                            <div class="custom-bullet"><strong>Funciones en Lua: </strong>Presentación de funciones matemáticas y su implementación para optimizar la creación y control de elementos en los videojuegos.</div>
+                            <div class="custom-bullet"><strong>Taller práctico: </strong> Proyecto donde los estudiantes usarán ecuaciones lineales en Lua para programar el movimiento de objetos en el espacio, dándoles vida dentro del juego.</div>
+                        </div>
+                    </div>
+                </div> 
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Semana 5: Trigonometría Aplicada (1 hora)</button>
+                    <div class="accordion-content">
+                        <div class="custom-list">
+                            <p><strong>Objetivo:</strong>Introducir conceptos de trigonometría aplicada mediante la construcción de rampas y el cálculo de alturas y distancias en un entorno de juego.</p>
+                            <p><strong>Actividades:</strong></p>
+                            <div class="custom-bullet"><strong>Taller práctico 1:</strong> Los estudiantes calcularán el ángulo óptimo para construir una rampa funcional que facilite la circulación de un transporte urbano dentro del juego.</div>
+                            <div class="custom-bullet"><strong>Taller práctico 2:</strong> Utilizando las funciones trigonométricas seno y coseno, los estudiantes determinarán las dimensiones precisas de la base y la altura de la rampa creada.</div>
+                        </div>
+                    </div>
+                </div> 
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Semana 6: Estadística y Probabilidades (1 hora) </button>
+                    <div class="accordion-content">
+                        <div class="custom-list">
+                            <p><strong>Objetivo:</strong>Entender conceptos básicos de estadística y probabilidad para crear juegos, aprendiendo cómo analizar datos y diseñar mecánicas que hagan el juego más divertido y equilibrado. .</p>
+                            <p><strong>Actividades:</strong></p>
+                            <div class="custom-bullet"><strong>Frecuencia y Porcentaje: </strong> Entender las diferencias entre frecuencia y porcentaje, analizando cuál es más útil en diferentes escenarios del juego.</div>
+                            <div class="custom-bullet"><strong>Probabilidades: </strong> Explorar cómo las probabilidades afectan directamente las dinámicas y resultados de los juegos.</div>
+                            <div class="custom-bullet"><strong>Media y desviación estándar: </strong> Entender cómo estos indicadores estadísticos ayudan a resumir y analizar datos clave, y cómo aplicarlos para tomar decisiones estratégicas en el diseño y balanceo del juego.</div>
+                       
+                        </div>
+                    </div>
+                </div> 
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Semana 7: Clase integradora (1 hora)  </button>
+                    <div class="accordion-content">
+                
+                        <div class="custom-list">
+                            <p><strong>Objetivo:</strong>Consolidar los conocimientos adquiridos a lo largo del curso mediante el desarrollo de un proyecto completo que combine programación y conceptos matemáticos.</p>
+                            <p><strong>Actividades:</strong></p>
+                            <div class="custom-bullet"><strong>Taller práctico integrador: </strong> Los estudiantes aplicarán lo aprendido en los talleres anteriores en una actividad interactiva diseñada para repasar y reforzar los conceptos clave de programación y matemáticas trabajados durante el curso.</div>
+                           
+                        </div>
+                    </div>
+                </div> 
+        
+                <!-- Repite el formato para las semanas restantes -->
+            </div>
+
+               
+
+        </section>
+    </div>
+
+    <div class="tab-content" id="matricula-tab-content">
+        <section>
+            <h2>Proceso de Matrícula</h2>
+            <p>1. Envía tu información.<br>2. Realiza el pago.<br>3. Recibe tu confirmación.</p>
+        </section>
+    </div>
+
+    <div class="tab-content" id="faq-tab-content">
+        <section>
+            <h2>Preguntas Frecuentes</h2>
+
+        </section>
+    </div>
+
+    <div class="tab-content" id="about-tab-content">
+        <section class="about-section">
+            <img src="logo.png" alt="Logo">
+            <div class="text">
+                <h2>Sobre Nosotros</h2>
+                <p>Enseñamos matemáticas de manera creativa y tecnológica.</p>
+            </div>
+            
+        </section>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Math Manía Perú</p>
+</footer>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active-tab'));
+            contents.forEach(c => c.classList.remove('active-content'));
+
+            tab.classList.add('active-tab');
+            const contentId = tab.id + '-content';
+            document.getElementById(contentId).classList.add('active-content');
+        });
+    });
+</script>
+
+
+<script>
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const currentItem = header.parentElement;
+        const allItems = document.querySelectorAll('.accordion-item');
+
+        // Cierra todos los contenidos excepto el que se acaba de hacer clic
+        allItems.forEach(item => {
+            if (item !== currentItem) {
+                item.classList.remove('open');
+                item.querySelector('.accordion-content').style.display = 'none';
+            }
+        });
+
+        // Alterna la visibilidad del contenido actual
+        const content = header.nextElementSibling;
+        const isOpen = currentItem.classList.contains('open');
+        if (isOpen) {
+            currentItem.classList.remove('open');
+            content.style.display = 'none';
+        } else {
+            currentItem.classList.add('open');
+            content.style.display = 'block';
+        }
+    });
+});
+
+// Abre por defecto el primer acordeón
+const firstAccordion = document.querySelector('.accordion-item.open .accordion-content');
+if (firstAccordion) {
+    firstAccordion.style.display = 'block';
+}
+</script>
+
+</body>
+</html>
