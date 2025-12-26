@@ -3,334 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Manía Perú</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D40DRPN31E"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <title>Math Manía Perú - Donde las matemáticas cobran vida</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel para JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    gtag('config', 'G-D40DRPN31E');
-    </script>
+    <!-- Estilos y Animaciones Personalizadas -->
     <style>
-        body {
-            font-family: 'Comic Sans MS', 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            color: #333;
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+        
+        .font-heading { font-family: 'Fredoka', sans-serif; }
+        .font-body { font-family: 'Nunito', sans-serif; }
+        html { scroll-behavior: smooth; }
+
+        .animate-blob {
+            animation: blob 7s infinite;
         }
-        header {
-            background-color: hwb(0 0% 100%);
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .animation-delay-2000 {
+            animation-delay: 2s;
         }
-        header h1 {
-            margin: 10px 0;
-            font-size: 2.5em;
-            color: white;
-            background-color: #4f4f4f;
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: inline-block;
+        .animate-bounce-slow {
+            animation: bounce 3s infinite;
         }
-        header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        .container {
-            width: 90%;
-            margin: 20px auto;
-        }
-        .tabs {
-            display: flex;
-            justify-content: center;
-            border-bottom: 2px solid #ddd;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .tab {
-            padding: 10px 15px;
-            cursor: pointer;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            margin-right: 5px;
-            border-radius: 5px 5px 0 0;
-            color: #333;
-            font-size: 1em;
-            flex: 1;
-            text-align: center;
-        }
-        .tab:hover {
-            background-color: #e0f7ff;
-            color: #000000;
-        }
-        .active-tab {
-            background-color: #00bfff;
-            color: #fff;
-            border-color: #00bfff;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .active-content {
-            display: block;
-        }
-        footer {
-            background-color: #000000;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-        .cta-btn {
-            background-color: #ff8c00;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1em;
-            display: inline-block;
-            margin-top: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        .cta-btn:hover {
-            background-color: #ff6600;
-        }
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: center;
-        }
-        .about-section img {
-            width: 500px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .about-section .text {
-            flex: 1;
-        }
-  
-        .custom-list {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        .custom-bullet {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
-        }
-        .custom-bullet::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #00bfff; 
-            font-size: 1.2em;
-        }
-        .accordion {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .accordion-item {
-            border-bottom: 1px solid #ddd;
-        }
-        .accordion-header {
-            width: 100%;
-            text-align: left;
-            padding: 10px 15px;
-            background-color: #f9f9f9;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
-        .accordion-header:hover {
-            background-color: #e0f7ff;
-        }
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
-        }
-        .accordion-item.open .accordion-content {
-            display: block;
-        }
-        .accordion-item.open .accordion-header {
-            background-color: #00bfff;
-            color: #fff;
+        .animate-fade-in-down {
+            animation: fadeInDown 0.5s ease-out;
         }
 
-        /* Styles for responsive layout */
-        .about-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
         }
 
-        @media (max-width: 768px) {
-            .about-section {
-                flex-direction: column;
-                text-align: justify;
-            }
-            .about-section img {
-                width: 100%;
-                max-width: 300px;
-                margin-bottom: 20px;
-            }
-            .about-section .text {
-                flex: none;
-            }
-
-            header img {
-                width: 100%;  /* Asegura que la imagen ocupe el 100% en pantallas pequeñas */
-                max-width: 100%; /* Evita que la imagen sobresalga */
-                height: auto; /* Mantiene las proporciones */
-            }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translate3d(0, -20px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
-
-
-        .highlight {
-            font-weight: bold;
-            color: #e716cb; /* Naranja brillante para resaltar */
+        
+        .blob-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
-        .power-phrase {
-            font-weight: bold;
-            color: #0400ff; /* Verde azulado para palabras de poder */
-        }
-
     </style>
 </head>
-<body>
+<body class="bg-slate-50">
+    <div id="root"></div>
 
-<header>
-    <img src="logo3.png" alt="MathManía Perú" class="logo">
-    <p> ...</p>
+    <script type="text/babel">
+        // --- Definición de Iconos (Reemplazando lucide-react para un solo archivo) ---
+        const Icon = ({ path, size = 24, className = "", ...props }) => (
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width={size} 
+                height={size} 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className={className}
+                {...props}
+            >
+                {path}
+            </svg>
+        );
 
-</header>
+        const Icons = {
+            Rocket: (props) => <Icon {...props} path={<><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></>} />,
+            Gamepad2: (props) => <Icon {...props} path={<><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.3 2.5a1.7 1.7 0 0 0-2.3.7l-1 1.7a1.6 1.6 0 0 0 .5 2l1.6.9a1.7 1.7 0 0 0 2.4-.6l1-1.7a1.6 1.6 0 0 0-.6-2.1Z"/><path d="m2 15 2 7h15l2-7-6-10-6 3-6-3Z"/></>} />,
+            Brain: (props) => <Icon {...props} path={<><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-1.4 4.5 4.5 0 0 1-3 1.4"/><path d="M12 18v-5.293a.5.5 0 0 1 .146-.353l.854-.854a.5.5 0 0 0 0-.707l-1.708-1.707a.5.5 0 0 0-.707 0L9.732 9.94a.5.5 0 0 1-.146.353V15.6"/></>} />,
+            Handshake: (props) => <Icon {...props} path={<><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 2 0l.47-.28c2.63-1.57 5.86-.27 7.25 2.91a2 2 0 0 1-.65 2.55l-9.93 9.93a6 6 0 0 1-8.48 0L2.5 16.5a2 2 0 0 1-.65-2.55 6 6 0 0 1 3.31-2.95"/></>} />,
+            Lightbulb: (props) => <Icon {...props} path={<><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.4 1.5-3.8 0-3.2-2.6-5.8-5.8-5.8-3.2 0-5.8 2.6-5.8 5.8 0 1.4.5 2.8 1.5 3.8.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></>} />,
+            Sparkles: (props) => <Icon {...props} path={<><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></>} />,
+            ArrowRight: (props) => <Icon {...props} path={<><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></>} />,
+            Star: (props) => <Icon {...props} path={<><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></>} />,
+            Menu: (props) => <Icon {...props} path={<><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></>} />,
+            X: (props) => <Icon {...props} path={<><path d="M18 6 6 18"/><path d="m6 6 12 12"/></>} />,
+            Trophy: (props) => <Icon {...props} path={<><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></>} />,
+            Timer: (props) => <Icon {...props} path={<><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></>} />,
+            Hammer: (props) => <Icon {...props} path={<><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></>} />,
+            Layers: (props) => <Icon {...props} path={<><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></>} />,
+            Ruler: (props) => <Icon {...props} path={<><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></>} />,
+            Users: (props) => <Icon {...props} path={<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>} />,
+            GraduationCap: (props) => <Icon {...props} path={<><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></>} />,
+            Target: (props) => <Icon {...props} path={<><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></>} />,
+            Play: (props) => <Icon {...props} path={<><polygon points="6 3 20 12 6 21 6 3"/></>} />,
+        };
 
-<div class="container">
-    
-        <section class="about-section">
-            <img src="logo.png" alt="Imagen representativa" />
-      <div class="text">
-  <h2>¿Quiénes somos?</h2>
+        const { Rocket, Gamepad2, Brain, Handshake, Lightbulb, Sparkles, ArrowRight, Star, Menu, X, Trophy, Timer, Hammer, Layers, Ruler, Users, GraduationCap, Target, Play } = Icons;
 
-  <p>Para muchos estudiantes de educación básica, las matemáticas parecen difíciles y aburridas, lo que hace que piensen que no son buenos en esta materia. Pensamientos como 
-  <span class="highlight">"¿Para qué me sirve esto?"</span>, 
-  <span class="highlight">"¿Por qué estudiar algo que nunca voy a usar?"</span> o 
-  <span class="highlight">"¿Será que no soy lo suficientemente inteligente para entender las matemáticas?"</span> se convierten en dudas recurrentes.</p>
-  
-  <p>En <span class="power-phrase">Math Manía Perú</span>, creemos que las matemáticas no deben ser vistas como un obstáculo, sino como una <span class="power-phrase">herramienta poderosa</span> que puede abrir muchas puertas. Nuestro objetivo es cambiar la percepción de los estudiantes sobre esta materia, ayudándoles a dejar atrás esas inseguridades y ofrecerles una nueva forma de explorar las matemáticas de manera divertida y conectada con su vida diaria.</p>
-  
-  <p>En <span class="power-phrase">Math Manía Perú</span>, somos un equipo que cree en el <span class="power-phrase">poder de las matemáticas</span> 🚀. Con actividades y cursos divertidos, buscamos que los estudiantes usen las matemáticas en situaciones cotidianas. Desde usar álgebra para crear personajes de videojuegos hasta aplicar probabilidades y estadísticas para tomar decisiones estratégicas en sus juegos favoritos. Buscamos que las matemáticas dejen de ser abstractas y se conviertan en algo útil y práctico.</p>
-  
-  <p>Así que, ¿por qué no cambiar la forma en que ves las matemáticas? ¡Únete a <span class="power-phrase">Math Manía Perú</span> y vive esta aventura con nosotros! 🎮</p>
+        // --- Componente Principal ---
+        const MathManiaLanding = () => {
+            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+            const [scrolled, setScrolled] = React.useState(false);
 
-  <!-- Sección del equipo y redes sociales -->
-  <section class="founder-section" style="text-align: center; margin-top: 30px;">
-    <p style="font-style: italic;">— Equipo de Math Manía Perú</p>
+            // Efecto para el header al hacer scroll
+            React.useEffect(() => {
+                const handleScroll = () => {
+                setScrolled(window.scrollY > 20);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
 
-<div class="social-links" style="margin-top: 25px; text-align: center;">
-  <p style="font-weight: bold; font-size: 1.1em;">Síguenos en nuestras redes:</p>
+            const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  <!-- YouTube -->
-  <a href="https://www.youtube.com/@MathManiaPeru" target="_blank" style="margin-right: 15px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
-         alt="YouTube" 
-         style="width: 40px; height: 40px; border-radius: 50%; background-color: #fff; padding: 5px; transition: transform 0.2s;">
-  </a>
+            return (
+                <div className="min-h-screen font-sans text-gray-800 bg-slate-50 overflow-x-hidden selection:bg-purple-200">
+                {/* Navbar */}
+                <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'}`}>
+                    <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                        <div className="bg-purple-600 p-2 rounded-xl rotate-3 shadow-lg">
+                        <Gamepad2 className="w-6 h-6 text-white" />
+                        </div>
+                        <span className="text-2xl font-heading font-bold text-purple-700 tracking-tight">Math<span className="text-orange-500">Manía</span></span>
+                    </div>
 
-  <!-- TikTok -->
-  <a href="https://www.tiktok.com/@mathmania.peru" target="_blank" style="margin-right: 15px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg" 
-         alt="TikTok" 
-         style="width: 40px; height: 40px; border-radius: 50%; background-color: #fff; padding: 5px; transition: transform 0.2s;">
-  </a>
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center gap-8 font-heading font-semibold text-gray-600">
+                        <a href="#mision" className="hover:text-purple-600 transition-colors">La Misión</a>
+                        <a href="#modalidades" className="text-purple-700 bg-purple-100 hover:bg-purple-200 px-5 py-2 rounded-full transition-all font-bold shadow-sm hover:shadow-md">
+                        Programas
+                        </a>
+                        <a href="#testimonios" className="hover:text-purple-600 transition-colors">Testimonios</a>
+                    </div>
 
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/MathManiaPeru" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
-         alt="Facebook" 
-         style="width: 40px; height: 40px; border-radius: 50%; background-color: #fff; padding: 5px; transition: transform 0.2s;">
-  </a>
-</div>
-  </section>
-</div>
-        </section>
- 
+                    {/* Mobile Toggle */}
+                    <button onClick={toggleMenu} className="md:hidden text-gray-700">
+                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
+                    </div>
 
-</div>
+                    {/* Mobile Menu */}
+                    {isMenuOpen && (
+                    <div className="md:hidden bg-white border-t p-4 flex flex-col gap-4 font-heading shadow-xl animate-fade-in-down">
+                        <a href="#mision" onClick={toggleMenu} className="text-gray-700 font-semibold p-2 hover:bg-purple-50 rounded">La Misión</a>
+                        <a href="#modalidades" onClick={toggleMenu} className="text-gray-700 font-semibold p-2 hover:bg-purple-50 rounded">Programas</a>
+                        <a href="#testimonios" onClick={toggleMenu} className="text-gray-700 font-semibold p-2 hover:bg-purple-50 rounded">Testimonios</a>
+                        <a href="https://forms.gle/cysTnsvbgnnifRP48" target="_blank" rel="noopener noreferrer" className="bg-orange-500 text-white px-6 py-3 rounded-xl font-bold w-full text-center block">
+                        ¡Inscripción Gratis!
+                        </a>
+                    </div>
+                    )}
+                </nav>
 
-<footer>
-    <p>&copy; 2025 Math Manía Perú</p>
-</footer>
+                {/* Hero Section */}
+                <header className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-b from-purple-50 to-white">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+                    <div className="absolute top-0 left-0 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+                    
+                    <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
+                    <div className="inline-flex items-center gap-2 bg-white border border-purple-200 shadow-sm px-4 py-1.5 rounded-full mb-6 animate-bounce-slow">
+                        <Sparkles className="w-4 h-4 text-orange-500" />
+                        <span className="text-sm font-bold text-purple-700 font-heading">¡Aprender nunca fue tan divertido!</span>
+                    </div>
+                    
+                    <h1 className="text-5xl md:text-7xl font-heading font-black text-gray-900 leading-tight mb-6">
+                        Donde las matemáticas cobran <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">vida y diversión</span>
+                    </h1>
+                    
+                    <p className="text-xl md:text-2xl text-gray-600 font-body max-w-2xl mx-auto mb-10 leading-relaxed">
+                        Descubre <span className="font-bold text-purple-700">Math Manía</span>: Transforma los números en aventuras y enciende la curiosidad de tus hijos. 🚀🧮
+                    </p>
+                    
+                    <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+                        {/* UPDATED: Link to Programas Section */}
+                        <a href="#modalidades" className="w-full md:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-heading font-bold text-lg shadow-xl shadow-purple-200 hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                        Ver Programas <ArrowRight />
+                        </a>
+                        {/* UPDATED: Link to YouTube Trailer */}
+                        <a href="https://www.youtube.com/watch?v=lwvs7Oo3bIY" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-200 rounded-2xl font-heading font-bold text-lg transition-all flex items-center justify-center gap-2">
+                        Ver Video Trailer <Play size={20} className="fill-current text-red-500" />
+                        </a>
+                    </div>
+                    </div>
+                </header>
 
-<script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
+                {/* Mission Section */}
+                <section id="mision" className="py-20 bg-white relative blob-bg">
+                    <div className="container mx-auto px-4 md:px-8">
+                    <div className="max-w-4xl mx-auto bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-purple-100 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-bl-[100%] z-0"></div>
+                        
+                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                        <div className="flex-1">
+                            <h2 className="text-3xl font-heading font-bold text-purple-800 mb-4">
+                            ¿Sabías que los grandes cambios empiezan con una pequeña chispa? ✨
+                            </h2>
+                            <p className="text-lg text-gray-600 font-body leading-relaxed mb-6">
+                            En <span className="font-bold text-purple-600">Math Manía</span>, nuestra misión es encender esa curiosidad en niños y niñas que aún no han conectado con las matemáticas.
+                            </p>
+                            <p className="text-lg text-gray-600 font-body leading-relaxed">
+                            Transformamos el estudio en una experiencia <span className="inline-block px-2 py-1 bg-yellow-100 text-yellow-800 rounded-lg font-bold transform -rotate-1">viva</span>, <span className="inline-block px-2 py-1 bg-green-100 text-green-800 rounded-lg font-bold transform rotate-2">creativa</span> y llena de <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 rounded-lg font-bold">confianza</span>.
+                            </p>
+                        </div>
+                        <div className="w-full md:w-1/3 flex justify-center">
+                            <div className="relative">
+                            <div className="absolute inset-0 bg-purple-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                            <img src="https://cdn-icons-png.flaticon.com/512/4102/4102326.png" alt="Math Idea" className="w-48 h-48 relative z-10 object-contain drop-shadow-xl transform hover:scale-110 transition-transform duration-500" />
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active-tab'));
-            contents.forEach(c => c.classList.remove('active-content'));
+                {/* SECCIÓN UNIFICADA: Nuestros Programas */}
+                <section id="modalidades" className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
+                    <div className="container mx-auto px-4 md:px-8">
+                    <div className="text-center mb-16">
+                        <span className="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm font-bold font-heading uppercase tracking-wider mb-4 inline-block">Nuestros Programas</span>
+                        <h2 className="text-4xl md:text-5xl font-heading font-black text-gray-900 mb-4">Elige tu Aventura</h2>
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto font-body">
+                        Dos caminos diseñados para potenciar el talento de tu hijo, ya sea demostrando su velocidad o construyendo su propio mundo.
+                        </p>
+                    </div>
 
-            tab.classList.add('active-tab');
-            const contentId = tab.id + '-content';
-            document.getElementById(contentId).classList.add('active-content');
-        });
-    });
-</script>
+                    <div className="space-y-16 max-w-6xl mx-auto">
+                        
+                        {/* Modalidad 1: Desafío Data Tower */}
+                        <div className="bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-red-100 hover:border-red-300 transition-all hover:shadow-2xl relative group">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 rounded-bl-[100%] z-0"></div>
+                        
+                        <div className="grid lg:grid-cols-2 relative z-10">
+                            
+                            {/* Lado Izquierdo: Información */}
+                            <div className="p-8 md:p-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 text-sm font-bold rounded-full mb-6">
+                                <Trophy size={16} />
+                                Modalidad Competitiva
+                            </div>
 
+                            <h3 className="text-3xl md:text-4xl font-heading font-black text-gray-900 mb-2 leading-tight">
+                                Desafío <span className="text-red-500">Data Tower</span>
+                            </h3>
+                            <h4 className="text-xl text-gray-500 font-body mb-6">Matemáticas en Tiempo Real</h4>
+                            
+                            <p className="text-gray-600 italic mb-8 border-l-4 border-red-400 pl-4">
+                                "Este no es un torneo de videojuegos, es una olimpíada de agilidad mental donde el niño usa los números para ganar."
+                            </p>
 
-<script>
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
+                            {/* Visual del Juego + Video Miniatura */}
+                            <a href="https://www.youtube.com/watch?v=lwvs7Oo3bIY" target="_blank" rel="noopener noreferrer" className="block bg-gray-800 rounded-xl p-4 mb-8 shadow-lg relative overflow-hidden group/video border border-gray-200">
+                                <div className="flex items-center gap-4">
+                                    <div className="relative w-24 h-16 bg-gray-700 rounded-lg flex-shrink-0 overflow-hidden">
+                                        {/* Falso thumbnail */}
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-purple-800 to-indigo-600"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <Play className="w-8 h-8 text-white opacity-80" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className="text-white font-bold text-sm">Ver Trailer Oficial</p>
+                                        <p className="text-gray-400 text-xs">Haz clic para ver el video</p>
+                                    </div>
+                                </div>
+                                <div className="absolute inset-0 bg-black/0 group-hover/video:bg-black/10 transition-colors cursor-pointer"></div>
+                            </a>
 
-accordionHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-        const currentItem = header.parentElement;
-        const allItems = document.querySelectorAll('.accordion-item');
+                            <div className="space-y-4 mb-8">
+                                <div className="flex gap-4 items-start">
+                                <Target className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                <div>
+                                    <h5 className="font-bold text-gray-900 text-base">Agilidad Mental</h5>
+                                    <p className="text-gray-600 text-sm">Ganan por elegir el camino correcto usando probabilidades.</p>
+                                </div>
+                                </div>
+                                <div className="flex gap-4 items-start">
+                                <GraduationCap className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                <div>
+                                    <h5 className="font-bold text-gray-900 text-base">Premio: Beca de Excelencia</h5>
+                                    <p className="text-gray-600 text-sm">Para nuestro taller mensual de razonamiento aplicado.</p>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
 
-        // Cierra todos los contenidos excepto el que se acaba de hacer clic
-        allItems.forEach(item => {
-            if (item !== currentItem) {
-                item.classList.remove('open');
-                item.querySelector('.accordion-content').style.display = 'none';
-            }
-        });
+                            {/* Lado Derecho: Acción e Inscripción (QR) */}
+                            <div className="bg-red-50/50 p-8 md:p-12 flex flex-col justify-center items-center text-center border-l border-red-100">
+                            
+                            <div className="bg-white p-6 rounded-2xl shadow-xl border border-red-100 max-w-sm w-full relative">
+                                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">
+                                    ¡Gratis!
+                                </div>
 
-        // Alterna la visibilidad del contenido actual
-        const content = header.nextElementSibling;
-        const isOpen = currentItem.classList.contains('open');
-        if (isOpen) {
-            currentItem.classList.remove('open');
-            content.style.display = 'none';
-        } else {
-            currentItem.classList.add('open');
-            content.style.display = 'block';
-        }
-    });
-});
+                                <h4 className="font-heading font-bold text-xl text-gray-900 mb-4 mt-2">Inscripción al Torneo</h4>
+                                
+                                {/* QR Code Container */}
+                                <div className="bg-gray-100 p-3 rounded-xl mb-4 mx-auto w-40 h-40 flex items-center justify-center border-2 border-dashed border-gray-300">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/cysTnsvbgnnifRP48" alt="QR Registro" className="w-full h-full rounded-lg mix-blend-multiply" />
+                                </div>
 
-// Abre por defecto el primer acordeón
-const firstAccordion = document.querySelector('.accordion-item.open .accordion-content');
-if (firstAccordion) {
-    firstAccordion.style.display = 'block';
-}
-</script>
+                                <p className="text-sm text-gray-500 mb-6">Escanea el código QR o usa el botón para asegurar tu lugar.</p>
+                                
+                                {/* UPDATED: Link to Google Forms */}
+                                <a href="https://forms.gle/cysTnsvbgnnifRP48" target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold font-heading shadow-md shadow-red-200 flex items-center justify-center gap-2 transition-transform active:scale-95">
+                                    Registrarme Ahora <Rocket size={18} />
+                                </a>
+                            </div>
 
+                            <p className="mt-6 text-sm text-gray-500 flex items-center gap-2">
+                                <Sparkles size={14} className="text-orange-400" /> 
+                                Incluye reporte de desempeño lógico
+                            </p>
+                            </div>
+
+                        </div>
+                        </div>
+
+                        {/* Modalidad 2: Taller Creadores */}
+                        <div className="bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-blue-100 hover:border-blue-300 transition-all hover:shadow-2xl relative group">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-bl-[100%] z-0"></div>
+                        
+                        <div className="grid lg:grid-cols-5 p-8 md:p-12 relative z-10 gap-10">
+                            <div className="lg:col-span-3">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 text-sm font-bold rounded-full mb-6">
+                                <Hammer size={16} />
+                                Modalidad Creativa
+                            </div>
+
+                            <h3 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-2">
+                                Taller Creadores: <span className="text-blue-600">El Arte de Pensar</span>
+                            </h3>
+                            <p className="text-xl text-gray-500 mb-6">De "diseñar juegos" a dominar las matemáticas.</p>
+                            
+                            <p className="text-gray-600 leading-relaxed mb-8 font-body text-lg">
+                                En este taller de un mes, tu hijo pasará de ser un jugador a ser un <strong>Creador de Retos</strong>. Aprenderá los conceptos difíciles del colegio de forma 100% práctica:
+                            </p>
+
+                            <div className="grid sm:grid-cols-3 gap-6 mb-8">
+                                <div className="bg-blue-50 p-4 rounded-xl text-center hover:bg-blue-100 transition-colors">
+                                    <Ruler className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                                    <h6 className="font-bold text-blue-800">Geometría</h6>
+                                    <p className="text-xs text-blue-600">Para construir estructuras y rampas.</p>
+                                </div>
+                                <div className="bg-purple-50 p-4 rounded-xl text-center hover:bg-purple-100 transition-colors">
+                                    <Layers className="w-8 h-8 text-purple-500 mx-auto mb-2" />
+                                    <h6 className="font-bold text-purple-800">Cálculo</h6>
+                                    <p className="text-xs text-purple-600">Para sistemas de puntaje y estrategia.</p>
+                                </div>
+                                <div className="bg-orange-50 p-4 rounded-xl text-center hover:bg-orange-100 transition-colors">
+                                    <Brain className="w-8 h-8 text-orange-500 mx-auto mb-2" />
+                                    <h6 className="font-bold text-orange-800">Lógica</h6>
+                                    <p className="text-xs text-orange-600">Para que las reglas del juego funcionen.</p>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div className="lg:col-span-2 flex flex-col justify-center bg-blue-50/50 rounded-2xl p-6 border border-blue-100 text-center">
+                            <div className="mb-6">
+                                <p className="text-gray-500 text-sm uppercase tracking-wider font-bold mb-2">Grupos Exclusivos</p>
+                                <div className="flex justify-center -space-x-3 mb-2">
+                                    {[1,2,3,4,5].map(i => (
+                                    <div key={i} className="w-10 h-10 rounded-full bg-white border-2 border-blue-200 flex items-center justify-center text-xs font-bold text-blue-400 shadow-sm">
+                                        {i}
+                                    </div>
+                                    ))}
+                                </div>
+                                <p className="text-blue-600 font-bold text-sm">Máximo 5 niños por grupo</p>
+                            </div>
+                            
+                            {/* UPDATED: WhatsApp Link for Creative Mode */}
+                            <a href="https://wa.me/51983870089" target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold font-heading shadow-lg shadow-blue-200 flex items-center justify-center gap-2 transition-transform active:scale-95">
+                                Quiero que sea Creador <Lightbulb size={20} />
+                            </a>
+                            <p className="text-center text-xs text-gray-400 mt-3">Asegura atención personalizada para tu hijo.</p>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </section>
+
+                {/* Testimonials */}
+                <section id="testimonios" className="py-20 bg-purple-50">
+                    <div className="container mx-auto px-4 md:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-heading font-bold text-purple-900">Lo que dicen los jugadores</h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        
+                        {/* Testimonial 1 */}
+                        <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border-b-8 border-purple-200 relative flex flex-col hover:transform hover:-translate-y-1 transition-transform duration-300">
+                        <div className="absolute -top-5 left-10 bg-yellow-400 text-yellow-900 p-2.5 rounded-full shadow-md">
+                            <Star className="w-6 h-6 fill-current" />
+                        </div>
+                        
+                        <div className="mb-6 flex-grow">
+                            <p className="text-lg text-gray-700 font-heading italic leading-relaxed">
+                            "Está muy divertido para jugar con amigos, me he reído mucho... y eso de las probabilidades también está bastante interesante, te hace pensar en qué probabilidades tienes para sobrevivir en cada ruta."
+                            </p>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 border-t pt-6 mt-auto">
+                            <div className="w-12 h-12 bg-gray-100 rounded-full overflow-hidden border-2 border-purple-100">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=b6e3f4" alt="Avatar" />
+                            </div>
+                            <div className="text-left">
+                            <p className="font-bold text-purple-800">Participante</p>
+                            <p className="text-sm text-gray-500">11 años</p>
+                            </div>
+                        </div>
+                        </div>
+
+                        {/* Testimonial 2 */}
+                        <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border-b-8 border-blue-200 relative flex flex-col hover:transform hover:-translate-y-1 transition-transform duration-300">
+                        <div className="absolute -top-5 left-10 bg-yellow-400 text-yellow-900 p-2.5 rounded-full shadow-md">
+                            <Star className="w-6 h-6 fill-current" />
+                        </div>
+                        
+                        <div className="mb-6 flex-grow">
+                            <p className="text-lg text-gray-700 font-heading italic leading-relaxed">
+                            "¡Felicito mucho al que ganó el primer puesto! Espero que aproveche súper bien su beca porque se la merece."
+                            </p>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 border-t pt-6 mt-auto">
+                            <div className="w-12 h-12 bg-gray-100 rounded-full overflow-hidden border-2 border-blue-100">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka&backgroundColor=c0aede" alt="Avatar" />
+                            </div>
+                            <div className="text-left">
+                            <p className="font-bold text-blue-800">Participante</p>
+                            <p className="text-sm text-gray-500">10 años</p>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </section>
+
+                {/* Simple Footer */}
+                <footer className="bg-white border-t py-12 text-center text-gray-500 text-sm font-body">
+                    <div className="container mx-auto px-4">
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                        <div className="bg-purple-600 p-1.5 rounded-lg rotate-3">
+                        <Gamepad2 className="w-4 h-4 text-white" />
+                        </div>
+                        <span className="text-xl font-heading font-bold text-purple-700">Math<span className="text-orange-500">Manía</span></span>
+                    </div>
+                    <p className="mb-6">Despierta el genio matemático jugando.</p>
+                    
+                    {/* Redes Sociales */}
+                    <div className="flex justify-center items-center gap-4 mb-8">
+                        {/* YouTube */}
+                        <a href="https://www.youtube.com/@MathManiaPeru" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-200">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
+                            alt="YouTube" 
+                            className="w-10 h-10 rounded-full bg-white p-1 shadow-sm border border-gray-100 object-contain"
+                        />
+                        </a>
+
+                        {/* TikTok */}
+                        <a href="https://www.tiktok.com/@mathmania.peru" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-200">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg" 
+                            alt="TikTok" 
+                            className="w-10 h-10 rounded-full bg-white p-1 shadow-sm border border-gray-100 object-contain"
+                        />
+                        </a>
+
+                        {/* Facebook */}
+                        <a href="https://www.facebook.com/MathManiaPeru" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-200">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
+                            alt="Facebook" 
+                            className="w-10 h-10 rounded-full bg-white p-1 shadow-sm border border-gray-100 object-contain"
+                        />
+                        </a>
+                    </div>
+
+                    <p>© 2024 Math Manía Perú. Todos los derechos reservados.</p>
+                    </div>
+                </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<MathManiaLanding />);
+    </script>
 </body>
 </html>

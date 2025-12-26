@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Manía Perú</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D40DRPN31E"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D40DRPN31E');
+    </script>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        header {
+            background-color: hwb(0 0% 100%);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 10px 0;
+            font-size: 2.5em;
+            color: white;
+            background-color: #4f4f4f;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            color: #333;
+            font-size: 1em;
+            flex: 1;
+            text-align: center;
+        }
+        .tab:hover {
+            background-color: #e0f7ff;
+            color: #000000;
+        }
+        .active-tab {
+            background-color: #00bfff;
+            color: #fff;
+            border-color: #00bfff;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .active-content {
+            display: block;
+        }
+        footer {
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .cta-btn {
+            background-color: #ff8c00;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .cta-btn:hover {
+            background-color: #ff6600;
+        }
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        .about-section img {
+            width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .about-section .text {
+            flex: 1;
+        }
+  
+        .custom-list {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .custom-bullet {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+        .custom-bullet::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #00bfff; 
+            font-size: 1.2em;
+        }
+        .accordion {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px;
+            background-color: #f9f9f9;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .accordion-header:hover {
+            background-color: #e0f7ff;
+        }
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+        }
+        .accordion-item.open .accordion-content {
+            display: block;
+        }
+        .accordion-item.open .accordion-header {
+            background-color: #00bfff;
+            color: #fff;
+        }
+
+        /* Styles for responsive layout */
+        .about-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                text-align: justify;
+            }
+            .about-section img {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 20px;
+            }
+            .about-section .text {
+                flex: none;
+            }
+
+            header img {
+                width: 100%;  /* Asegura que la imagen ocupe el 100% en pantallas pequeñas */
+                max-width: 100%; /* Evita que la imagen sobresalga */
+                height: auto; /* Mantiene las proporciones */
+            }
+        }
+
+
+        .highlight {
+            font-weight: bold;
+            color: #e716cb; /* Naranja brillante para resaltar */
+        }
+        .power-phrase {
+            font-weight: bold;
+            color: #0400ff; /* Verde azulado para palabras de poder */
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo3.png" alt="MathManía Perú" class="logo">
+    <p> ...</p>
+
+</header>
+
+<div class="container">
+    
+        <section class="about-section">
+            <img src="logo.png" alt="Imagen representativa" />
+      <div class="text">
+  <h2>¿Quiénes somos?</h2>
+
+  <p>Para muchos estudiantes de educación básica, las matemáticas parecen difíciles y aburridas, lo que hace que piensen que no son buenos en esta materia. Pensamientos como 
+  <span class="highlight">"¿Para qué me sirve esto?"</span>, 
+  <span class="highlight">"¿Por qué estudiar algo que nunca voy a usar?"</span> o 
+  <span class="highlight">"¿Será que no soy lo suficientemente inteligente para entender las matemáticas?"</span> se convierten en dudas recurrentes.</p>
+  
+  <p>En <span class="power-phrase">Math Manía Perú</span>, creemos que las matemáticas no deben ser vistas como un obstáculo, sino como una <span class="power-phrase">herramienta poderosa</span> que puede abrir muchas puertas. Nuestro objetivo es cambiar la percepción de los estudiantes sobre esta materia, ayudándoles a dejar atrás esas inseguridades y ofrecerles una nueva forma de explorar las matemáticas de manera divertida y conectada con su vida diaria.</p>
+  
+  <p>En <span class="power-phrase">Math Manía Perú</span>, somos un equipo que cree en el <span class="power-phrase">poder de las matemáticas</span> 🚀. Con actividades y cursos divertidos, buscamos que los estudiantes usen las matemáticas en situaciones cotidianas. Desde usar álgebra para crear personajes de videojuegos hasta aplicar probabilidades y estadísticas para tomar decisiones estratégicas en sus juegos favoritos. Buscamos que las matemáticas dejen de ser abstractas y se conviertan en algo útil y práctico.</p>
+  
+  <p>Así que, ¿por qué no cambiar la forma en que ves las matemáticas? ¡Únete a <span class="power-phrase">Math Manía Perú</span> y vive esta aventura con nosotros! 🎮</p>
+
+  <!-- Sección del equipo y redes sociales -->
+  <section class="founder-section" style="text-align: center; margin-top: 30px;">
+    <p style="font-style: italic;">— Equipo de Math Manía Perú</p>
+
+<div class="social-links" style="margin-top: 25px; text-align: center;">
+  <p style="font-weight: bold; font-size: 1.1em;">Síguenos en nuestras redes:</p>
+
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/@MathManiaPeru" target="_blank" style="margin-right: 15px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
+         alt="YouTube" 
+         style="width: 40px; height: 40px; border-radius: 50%; background-color: #fff; padding: 5px; transition: transform 0.2s;">
+  </a>
+
+  <!-- TikTok -->
+  <a href="https://www.tiktok.com/@mathmania.peru" target="_blank" style="margin-right: 15px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg" 
+         alt="TikTok" 
+         style="width: 40px; height: 40px; border-radius: 50%; background-color: #fff; padding: 5px; transition: transform 0.2s;">
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/MathManiaPeru" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
+         alt="Facebook" 
+         style="width: 40px; height: 40px; border-radius: 50%; background-color: #fff; padding: 5px; transition: transform 0.2s;">
+  </a>
+</div>
+  </section>
+</div>
+        </section>
+ 
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Math Manía Perú</p>
+</footer>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active-tab'));
+            contents.forEach(c => c.classList.remove('active-content'));
+
+            tab.classList.add('active-tab');
+            const contentId = tab.id + '-content';
+            document.getElementById(contentId).classList.add('active-content');
+        });
+    });
+</script>
+
+
+<script>
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const currentItem = header.parentElement;
+        const allItems = document.querySelectorAll('.accordion-item');
+
+        // Cierra todos los contenidos excepto el que se acaba de hacer clic
+        allItems.forEach(item => {
+            if (item !== currentItem) {
+                item.classList.remove('open');
+                item.querySelector('.accordion-content').style.display = 'none';
+            }
+        });
+
+        // Alterna la visibilidad del contenido actual
+        const content = header.nextElementSibling;
+        const isOpen = currentItem.classList.contains('open');
+        if (isOpen) {
+            currentItem.classList.remove('open');
+            content.style.display = 'none';
+        } else {
+            currentItem.classList.add('open');
+            content.style.display = 'block';
+        }
+    });
+});
+
+// Abre por defecto el primer acordeón
+const firstAccordion = document.querySelector('.accordion-item.open .accordion-content');
+if (firstAccordion) {
+    firstAccordion.style.display = 'block';
+}
+</script>
+
+</body>
+</html>
